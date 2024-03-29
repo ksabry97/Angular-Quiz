@@ -1,0 +1,29 @@
+.back-button {
+  position: absolute;
+  top: 10%;
+  inset-inline-start: 5%;
+  button {
+    border: none;
+    border-radius: 8px;
+    background: rgba(7, 113, 222, 0.1);
+    cursor: pointer;
+    width: fit-content;
+    padding: 10px;
+    flex-shrink: 0;
+    color: #0771de;
+    &:hover {
+      color: #fff;
+      background-color: #0771de;
+    }
+  }
+}
+
+.user-card {
+  ::ng-deep .margin-neg {
+    margin-top: -85%;
+    background-color: #bfd4e4;
+  }
+  ::ng-deep .blued {
+    background-color: #e3eef5;
+  }
+}

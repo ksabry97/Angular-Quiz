@@ -3,16 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { HomeComponent } from './components/home/home.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
+import { UsersServiceService } from './services/users-service.service';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { SkeletonModule } from 'primeng/skeleton';
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, HomeComponent, UserPageComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule,
+    SkeletonModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [UsersServiceService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

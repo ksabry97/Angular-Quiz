@@ -1,0 +1,49 @@
+<!-- search bar -->
+<div class="search-bar" [ngClass]="{ 'search-active': isActive }">
+  <img src="assets/search-normal.svg" alt="search-icon" />
+  <input
+    type="text"
+    (blur)="isActive = false"
+    (focus)="isActive = true"
+    (input)="search($event)"
+  />
+</div>
+
+<!-- skeleton until fetching data -->
+<div class="users-cards" *ngIf="skeletonVisible">
+  <div class="user-card" *ngFor="let item of [0, 1, 2, 3, 4, 5]">
+    <p-skeleton shape="circle" size="5rem" styleClass="margin-neg"></p-skeleton>
+    <p-skeleton width="6rem" styleClass="mb-2 blued"></p-skeleton>
+    <p-skeleton width="10rem" styleClass="mb-2 blued"></p-skeleton>
+  </div>
+</div>
+
+<!-- users cards -->
+
+<div class="users-cards" *ngIf="!skeletonVisible">
+  <div
+    class="user-card"
+    [routerLink]="['/user']"
+    [queryParams]="{ id: user.id }"
+    *ngFor="let user of filteredUsers"
+  >
+    <div class="user-avatar">
+      <img [src]="user.avatar" alt="user-image" />
+    </div>
+    <div class="user-details">
+      <p>{{ user.first_name }}, {{ user.last_name }}</p>
+      <p class="email">{{ user.email }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- pagination -->
+<div class="paginator">
+  <button
+    [disabled]="activeIndex == index"
+    *ngFor="let index of pageIndex"
+    (click)="getUsers(index)"
+  >
+    {{ index }}
+  </button>
+</div>
